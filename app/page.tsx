@@ -1,65 +1,352 @@
 import Image from "next/image";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function Home() {
+  const studios = [
+    {
+      id: "dev",
+      name: "The Click & Create Co. — Development",
+      tagline: "Code. Build. Deploy.",
+      description: "A development studio dedicated to building modern websites, web applications, and high-performance digital platforms.",
+      whatWeDo: ["Website development", "Web applications", "UI implementation", "performance optimization"],
+      outcome: "Powerful, fast, and scalable digital platforms.",
+      cta: "Explore Development →",
+      color: "border-studio-dev/30 hover:border-studio-dev shadow-studio-dev/10",
+      accent: "text-studio-dev"
+    },
+    {
+      id: "graphics",
+      name: "The Click & Create Co. — Graphics",
+      tagline: "Click. Create. Done.",
+      description: "A design studio focused on visual identity, brand assets, and digital design systems that make businesses stand out.",
+      whatWeDo: ["Brand identity", "social media design", "marketing materials", "brochures & presentations"],
+      outcome: "Professional visuals that strengthen brand recognition.",
+      cta: "Explore Design →",
+      color: "border-studio-graphics/30 hover:border-studio-graphics shadow-studio-graphics/10",
+      accent: "text-studio-graphics"
+    },
+    {
+      id: "markezo",
+      name: "Markezo",
+      tagline: "Growth Engineered.",
+      description: "A marketing and SEO studio helping businesses increase visibility, attract traffic, and convert audiences into customers.",
+      whatWeDo: ["SEO strategy", "content marketing", "local SEO", "digital campaigns"],
+      outcome: "Higher visibility and measurable business growth.",
+      cta: "Explore Marketing →",
+      color: "border-studio-markezo/30 hover:border-studio-markezo shadow-studio-markezo/10",
+      accent: "text-studio-markezo"
+    },
+    {
+      id: "blinks",
+      name: "BlinksArts",
+      tagline: "Motion. Story. Emotion.",
+      description: "A motion design studio creating engaging animated visuals that capture attention and communicate ideas effectively.",
+      whatWeDo: ["motion graphics", "animated explainers", "brand animations", "social media motion content"],
+      outcome: "Dynamic visuals that bring brands and stories to life.",
+      cta: "Explore Motion →",
+      color: "border-studio-blinks/30 hover:border-studio-blinks shadow-studio-blinks/10",
+      accent: "text-studio-blinks"
+    },
+    {
+      id: "valoria",
+      name: "Valoria",
+      tagline: "Animation Studio",
+      description: "A creative animation studio focused on storytelling, world-building, and cinematic animated productions.",
+      whatWeDo: ["animated series", "character animation", "visual storytelling", "cinematic animation projects"],
+      outcome: "Immersive animated experiences and stories.",
+      cta: "Explore Studio →",
+      color: "border-studio-valoria/30 hover:border-studio-valoria shadow-studio-valoria/10",
+      accent: "text-studio-valoria"
+    }
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-20 pointer-events-none">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-studio-dev/30 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-studio-graphics/30 rounded-full blur-[120px]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-studio-dev font-semibold tracking-wider uppercase text-sm mb-6 animate-fade-in">CINORIUM — Designed to Lead.</h2>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+            A collective of specialized studios building brands and digital platforms.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+            From branding and development to marketing, motion design, and animation — CINORIUM connects creativity and technology to help businesses build powerful digital experiences.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-white/5">
+              Explore Our Studios →
+            </button>
+            <button className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground border border-border rounded-full font-semibold hover:bg-accent transition-all">
+              Start a Project →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Studios Section */}
+      <section className="py-24 px-6 bg-zinc-950/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-2xl mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Five Studios. One Digital Ecosystem.</h2>
+            <p className="text-muted-foreground text-lg">
+              Each CINORIUM studio focuses on a specific part of the digital world. Together, they create complete digital systems for businesses and brands.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {studios.map((studio) => (
+              <div
+                key={studio.id}
+                className={`p-8 rounded-3xl border bg-card transition-all duration-300 flex flex-col h-full group ${studio.color} hover:shadow-2xl`}
+              >
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">{studio.name}</h3>
+                  <div className={`text-sm font-semibold tracking-widest uppercase ${studio.accent}`}>{studio.tagline}</div>
+                </div>
+
+                <p className="text-muted-foreground mb-8 text-sm leading-relaxed grow">
+                  {studio.description}
+                </p>
+
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/50 mb-3">What we do</div>
+                    <ul className="space-y-2">
+                      {studio.whatWeDo.map((item, i) => (
+                        <li key={i} className="text-sm flex items-center gap-2">
+                          <span className={`w-1 h-1 rounded-full ${studio.accent.replace('text-', 'bg-')}`} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="pt-6 border-t border-border/50">
+                    <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground/50 mb-2">Outcome</div>
+                    <p className="text-sm font-medium">{studio.outcome}</p>
+                  </div>
+
+                  <button className={`mt-4 text-sm font-bold flex items-center gap-2 transition-transform group-hover:translate-x-1 ${studio.accent}`}>
+                    {studio.cta}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ecosystem Section */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">The CINORIUM Digital Ecosystem</h2>
+            <p className="text-muted-foreground text-lg">
+              Every project within CINORIUM moves through a connected creative pipeline — from concept and design to technology, growth, and storytelling.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 -z-10" />
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              {[
+                { name: "Brand Identity", icon: "✨", color: "bg-studio-graphics" },
+                { name: "Digital Platforms", icon: "💻", color: "bg-studio-dev" },
+                { name: "Marketing & SEO", icon: "📈", color: "bg-studio-markezo" },
+                { name: "Motion Design", icon: "🎬", color: "bg-studio-blinks" },
+                { name: "Animation & Storytelling", icon: "🎨", color: "bg-studio-valoria" }
+              ].map((step, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div className={`w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center text-2xl mb-4 shadow-xl shadow-black/20 relative z-10 hover:scale-110 transition-transform cursor-default group`}>
+                    {step.icon}
+                    {i < 4 && <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 text-border text-xl">→</div>}
+                  </div>
+                  <div className="text-sm font-bold text-center">{step.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-center mt-12 text-muted-foreground italic">
+            This system allows brands to build complete digital experiences under one ecosystem.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Selected Work Section */}
+      <section className="py-24 px-6 bg-zinc-950/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="max-w-xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Work Across Our Studios</h2>
+              <p className="text-muted-foreground">Explore some of the digital projects created by the CINORIUM studios.</p>
+            </div>
+            <button className="text-sm font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+              View More Projects →
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { title: "Brand Identity + Website", category: "Graphics + Dev", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
+              { title: "Marketing Campaign", category: "Markezo", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" },
+              { title: "Motion Explainer Video", category: "BlinksArts", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" },
+              { title: "Animated Story Project", category: "Valoria", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" }
+            ].map((work, i) => (
+
+              <div key={i} className="group relative rounded-3xl overflow-hidden aspect-video cursor-pointer">
+                <Image
+                  src={work.image}
+                  alt={work.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+                  <div className="text-xs font-bold uppercase tracking-widest mb-2 opacity-70">{work.category}</div>
+                  <h3 className="text-2xl font-bold">{work.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Why CINORIUM Section */}
+      <section className="py-24 px-6 border-y border-border/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Businesses Partner With CINORIUM</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[
+              { title: "Specialized Studios", desc: "Each brand focuses on a specific discipline to deliver expert results." },
+              { title: "Creative + Technical Balance", desc: "Design, development, marketing, and storytelling working together." },
+              { title: "Growth-Focused Approach", desc: "Every project aims to create measurable impact and long-term value." },
+              { title: "Future-Ready Systems", desc: "Built for scalability, performance, and evolving digital landscapes." }
+            ].map((point, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center font-bold text-sm bg-secondary">0{i + 1}</div>
+                <h3 className="text-xl font-bold">{point.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{point.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Growth Partnership Section */}
+      <section className="py-24 px-6 bg-zinc-950/50">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Continuous Digital Growth</h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Our studios also provide ongoing support to maintain and improve digital platforms, marketing performance, and creative assets.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              {[
+                "website maintenance",
+                "SEO optimization",
+                "marketing creatives",
+                "social media visuals",
+                "performance analytics"
+              ].map((service, i) => (
+                <div key={i} className="flex items-center gap-3 text-sm font-medium">
+                  <div className="w-1.5 h-1.5 rounded-full bg-studio-markezo" />
+                  {service}
+                </div>
+              ))}
+            </div>
+            <button className="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-zinc-200 transition-colors">
+              Join Our Growth Partnership →
+            </button>
+          </div>
+          <div className="lg:w-1/2 w-full aspect-square relative rounded-3xl overflow-hidden border border-border bg-card/50 flex items-center justify-center p-12">
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-studio-markezo/50 rounded-full blur-[100px]" />
+            </div>
+            <div className="text-center">
+              <div className="text-6xl mb-6">🚀</div>
+              <div className="text-4xl font-bold mb-2">Growth Engineered.</div>
+              <div className="text-muted-foreground uppercase tracking-widest text-xs font-bold">Markezo & Co.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-32 px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 opacity-30">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-studio-dev/20 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-studio-graphics/20 rounded-full blur-[120px]" />
+        </div>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold mb-8">Let’s Build Something Exceptional.</h2>
+          <p className="text-xl text-muted-foreground mb-12">
+            Partner with CINORIUM to design, build, and grow your digital presence with a connected ecosystem of creative studios.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button className="w-full sm:w-auto px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+              Start Your Project →
+            </button>
+            <button className="w-full sm:w-auto px-10 py-5 bg-secondary text-white border border-border rounded-full font-bold text-lg hover:bg-accent transition-colors">
+              Explore Our Studios →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-20 px-6 border-t border-border">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="lg:col-span-1">
+            <div className="text-2xl font-bold mb-4 tracking-tighter">CINORIUM</div>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              Designed to Lead.
+            </p>
+            <div className="text-xs text-muted-foreground/50 italic">
+              © {new Date().getFullYear()} CINORIUM. All rights reserved.
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Studios</h4>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">The Click & Create Co. — Dev</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">The Click & Create Co. — Graphics</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">Markezo</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">BlinksArts</li>
+              <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">Valoria</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Links</h4>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              <li className="hover:text-white transition-colors cursor-pointer">About</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Work</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Studios</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Contact</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Connect</h4>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              <li className="hover:text-white transition-colors cursor-pointer">LinkedIn</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Instagram</li>
+              <li className="hover:text-white transition-colors cursor-pointer">Twitter</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
+
+
