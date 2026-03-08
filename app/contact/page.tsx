@@ -1,3 +1,4 @@
+import { Twitter, Instagram, Facebook } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -25,14 +26,39 @@ export default function Contact() {
                             </div>
                             <div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Follow Us</div>
-                                <div className="flex gap-6 mt-4">
-                                    <span className="text-sm font-bold uppercase tracking-tighter hover:text-studio-dev cursor-pointer transition-colors">LinkedIn</span>
-                                    <span className="text-sm font-bold uppercase tracking-tighter hover:text-studio-graphics cursor-pointer transition-colors">Instagram</span>
-                                    <span className="text-sm font-bold uppercase tracking-tighter hover:text-studio-blinks cursor-pointer transition-colors">Twitter</span>
+                                <div className="flex gap-6 mt-4 text-muted-foreground">
+                                    <a
+                                        href="https://x.com/cinorium_"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-white transition-colors"
+                                        aria-label="X (Twitter)"
+                                    >
+                                        <Twitter size={24} />
+                                    </a>
+                                    <a
+                                        href="https://www.facebook.com/cinorium"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-white transition-colors"
+                                        aria-label="Facebook"
+                                    >
+                                        <Facebook size={24} />
+                                    </a>
+                                    <a
+                                        href="https://www.instagram.com/cinorium_/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-white transition-colors"
+                                        aria-label="Instagram"
+                                    >
+                                        <Instagram size={24} />
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div className="bg-card shadow-2xl shadow-black/50 border border-border p-8 md:p-12 rounded-[40px]">
                         <form className="space-y-6">

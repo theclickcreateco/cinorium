@@ -1,3 +1,5 @@
+import { Twitter, Instagram, Facebook } from "lucide-react";
+
 export default function Footer() {
     return (
         <footer className="py-20 px-6 border-t border-border">
@@ -35,13 +37,38 @@ export default function Footer() {
 
                 <div>
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Connect</h4>
-                    <ul className="space-y-4 text-sm text-muted-foreground">
-                        <li className="hover:text-white transition-colors cursor-pointer">LinkedIn</li>
-                        <li className="hover:text-white transition-colors cursor-pointer">Instagram</li>
-                        <li className="hover:text-white transition-colors cursor-pointer">Twitter</li>
-                    </ul>
+                    <div className="flex gap-6 text-muted-foreground">
+                        <a
+                            href="https://x.com/cinorium_"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-white transition-colors"
+                            aria-label="X (Twitter)"
+                        >
+                            <Twitter size={20} />
+                        </a>
+                        <a
+                            href="https://www.facebook.com/cinorium"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-white transition-colors"
+                            aria-label="Facebook"
+                        >
+                            <Facebook size={20} />
+                        </a>
+                        <a
+                            href="https://www.instagram.com/cinorium_/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-white transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <Instagram size={20} />
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>
     );
 }
+
