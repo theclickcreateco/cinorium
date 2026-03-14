@@ -1,8 +1,50 @@
-import { Twitter, Instagram, Facebook } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Twitter, Instagram, Facebook, CheckCircle2, AlertCircle } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function Contact() {
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setStatus("loading");
+        setErrorMessage("");
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            studio: formData.get("studio"),
+            message: formData.get("message"),
+        };
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                const resData = await response.json();
+                throw new Error(resData.error || "Oops! Something went wrong.");
+            }
+
+            setStatus("success");
+            (e.target as HTMLFormElement).reset();
+        } catch (error: any) {
+            console.error("Contact form error:", error);
+            setStatus("error");
+            setErrorMessage(error.message || "Oops! Something went wrong. Please try again later.");
+        }
+    };
+
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
@@ -18,11 +60,11 @@ export default function Contact() {
                         <div className="space-y-8">
                             <div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">New Inquiries</div>
-                                <div className="text-2xl font-medium">projects@cinorium.com</div>
+                                <div className="text-2xl font-medium">admin@cinorium.com</div>
                             </div>
                             <div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">General Inquiries</div>
-                                <div className="text-2xl font-medium">hello@cinorium.com</div>
+                                <div className="text-2xl font-medium">projects@cinorium.com</div>
                             </div>
                             <div>
                                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Follow Us</div>
@@ -60,35 +102,50 @@ export default function Contact() {
                     </div>
 
 
-                    <div className="bg-card shadow-2xl shadow-black/50 border border-border p-8 md:p-12 rounded-[40px]">
-                        <form className="space-y-6">
+                    <div className="bg-card shadow-2xl shadow-black/50 border border-border p-8 md:p-12 rounded-[40px] relative overflow-hidden">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
-                                    <input type="text" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="John Doe" />
+                                    <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
+                                    <input required id="name" name="name" type="text" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="John Doe" disabled={status === "loading"} />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
-                                    <input type="email" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="john@example.com" />
+                                    <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
+                                    <input required id="email" name="email" type="email" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="john@example.com" disabled={status === "loading"} />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Studio of Interest</label>
-                                <select className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors appearance-none">
-                                    <option>Select a Studio</option>
-                                    <option>Development</option>
-                                    <option>Graphics & Design</option>
-                                    <option>Marketing & SEO</option>
-                                    <option>Motion Design</option>
-                                    <option>Storytelling & Animation</option>
+                                <label htmlFor="studio" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Studio of Interest</label>
+                                <select id="studio" name="studio" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors appearance-none" disabled={status === "loading"}>
+                                    <option value="">Select a Studio</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Graphics & Design">Graphics & Design</option>
+                                    <option value="Marketing & SEO">Marketing & SEO</option>
+                                    <option value="Motion Design">Motion Design</option>
+                                    <option value="Storytelling & Animation">Storytelling & Animation</option>
                                 </select>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
-                                <textarea rows={5} className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
+                                <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
+                                <textarea required id="message" name="message" rows={5} className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors resize-none" placeholder="Tell us about your project..." disabled={status === "loading"}></textarea>
                             </div>
-                            <button className="w-full py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-transform">
-                                Send Message →
+
+                            {status === "error" && (
+                                <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-xl flex items-center gap-3 text-destructive animate-fade-in">
+                                    <AlertCircle size={20} className="shrink-0" />
+                                    <span className="text-sm font-medium">{errorMessage}</span>
+                                </div>
+                            )}
+
+                            {status === "success" && (
+                                <div className="p-4 bg-studio-markezo/10 border border-studio-markezo/20 rounded-xl flex items-center gap-3 text-studio-markezo animate-fade-in">
+                                    <CheckCircle2 size={20} className="shrink-0" />
+                                    <span className="text-sm font-medium">Message sent successfully! We'll be in touch soon.</span>
+                                </div>
+                            )}
+
+                            <button type="submit" disabled={status === "loading"} className="w-full py-5 bg-white text-black rounded-full font-bold text-lg hover:bg-zinc-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2">
+                                {status === "loading" ? "Sending..." : "Send Message →"}
                             </button>
                         </form>
                     </div>

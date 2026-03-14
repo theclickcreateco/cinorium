@@ -21,7 +21,7 @@ export default function Navbar() {
                         About
                     </Link>
                     {/* <Link href="/" className="hover:text-foreground transition-colors">Work</Link> */}
-                    <Link href="/" className="hover:text-foreground transition-colors">Studios</Link>
+                    <Link href="/studios" className="hover:text-foreground transition-colors">Studios</Link>
                     <Link
                         href="/contact"
                         className={`px-4 py-2 border rounded-full transition-all ${isContactActive

@@ -104,7 +104,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {studios.map((studio) => (
-              <div
+              <Link
+                href={`/studios/${studio.id}`}
                 key={studio.id}
                 className={`p-8 rounded-3xl border bg-card transition-all duration-300 flex flex-col h-full group ${studio.color} hover:shadow-2xl`}
               >
@@ -135,11 +136,11 @@ export default function Home() {
                     <p className="text-sm font-medium">{studio.outcome}</p>
                   </div>
 
-                  <Link href={`/studios/${studio.id}`} className={`mt-4 text-sm font-bold flex items-center gap-2 transition-transform group-hover:translate-x-1 ${studio.accent}`}>
+                  <div className={`mt-4 text-sm font-bold flex items-center gap-2 transition-transform group-hover:translate-x-1 ${studio.accent}`}>
                     {studio.cta}
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -159,16 +160,16 @@ export default function Home() {
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 -z-10" />
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
               {[
-                { name: "Brand Identity", icon: "✨", color: "bg-studio-graphics" },
-                { name: "Digital Platforms", icon: "💻", color: "bg-studio-dev" },
-                { name: "Marketing & SEO", icon: "📈", color: "bg-studio-markezo" },
-                { name: "Motion Design", icon: "🎬", color: "bg-studio-blinks" },
-                { name: "Animation & Storytelling", icon: "🎨", color: "bg-studio-valoria" }
+                { name: "Brand Identity", icon: "✨", accent: "text-studio-graphics" },
+                { name: "Digital Platforms", icon: "💻", accent: "text-studio-dev" },
+                { name: "Marketing & SEO", icon: "📈", accent: "text-studio-markezo" },
+                { name: "Motion Design", icon: "🎬", accent: "text-studio-blinks" },
+                { name: "Animation & Storytelling", icon: "🎨", accent: "text-studio-valoria" }
               ].map((step, i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <div className={`w-16 h-16 rounded-2xl ${step.color} flex items-center justify-center text-2xl mb-4 shadow-xl shadow-black/20 relative z-10 hover:scale-110 transition-transform cursor-default group`}>
-                    {step.icon}
-                    {i < 4 && <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 text-border text-xl">→</div>}
+                  <div className="w-16 h-16 rounded-2xl bg-card border border-border shadow-lg flex items-center justify-center text-2xl mb-4 relative z-10 hover:scale-110 transition-transform cursor-default group">
+                    <span className={step.accent}>{step.icon}</span>
+                    {i < 4 && <div className="hidden lg:block absolute -right-4 top-1/2 text-border text-xl animate-slide-arrow">→</div>}
                   </div>
                   <div className="text-sm font-bold text-center">{step.name}</div>
                 </div>

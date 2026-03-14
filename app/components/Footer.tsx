@@ -39,10 +39,16 @@ export default function Footer() {
                 <div>
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Links</h4>
                     <ul className="space-y-4 text-sm text-muted-foreground">
-                        <li className="hover:text-white transition-colors cursor-pointer">About</li>
+                        <li className="hover:text-white transition-colors cursor-pointer">
+                            <Link href="/about">About</Link>
+                        </li>
                         {/* <li className="hover:text-white transition-colors cursor-pointer">Work</li> */}
-                        <li className="hover:text-white transition-colors cursor-pointer">Studios</li>
-                        <li className="hover:text-white transition-colors cursor-pointer">Contact</li>
+                        <li className="hover:text-white transition-colors cursor-pointer">
+                            <Link href="/studios">Studios</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors cursor-pointer">
+                            <Link href="/contact">Contact</Link>
+                        </li>
                     </ul>
                 </div>
 
