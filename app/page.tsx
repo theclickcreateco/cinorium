@@ -82,18 +82,18 @@ export default function Home() {
             From branding and development to marketing, motion design, and animation — CINORIUM connects creativity and technology to help businesses build powerful digital experiences.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-white/5">
+            <Link href="/studios" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-white/5 inline-flex justify-center items-center">
               Explore Our Studios →
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground border border-border rounded-full font-semibold hover:bg-accent transition-all">
+            </Link>
+            <Link href="/contact" className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground border border-border rounded-full font-semibold hover:bg-accent transition-all inline-flex justify-center items-center">
               Start a Project →
-            </button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Our Studios Section */}
-      <section className="py-24 px-6 bg-zinc-950/50">
+      <section className="py-24 px-6 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Five Studios. One Digital Ecosystem.</h2>
@@ -110,7 +110,7 @@ export default function Home() {
                 className={`p-8 rounded-3xl border bg-card transition-all duration-300 flex flex-col h-full group ${studio.color} hover:shadow-2xl`}
               >
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">{studio.name}</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-foreground transition-colors">{studio.name}</h3>
                   <div className={`text-sm font-semibold tracking-widest uppercase ${studio.accent}`}>{studio.tagline}</div>
                 </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section className="py-24 px-6 relative overflow-hidden">
+      <section className="py-24 px-6 relative overflow-hidden bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">The CINORIUM Digital Ecosystem</h2>
@@ -160,18 +160,56 @@ export default function Home() {
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent -translate-y-1/2 -z-10" />
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
               {[
-                { name: "Brand Identity", icon: "✨", accent: "text-studio-graphics" },
-                { name: "Digital Platforms", icon: "💻", accent: "text-studio-dev" },
-                { name: "Marketing & SEO", icon: "📈", accent: "text-studio-markezo" },
-                { name: "Motion Design", icon: "🎬", accent: "text-studio-blinks" },
-                { name: "Animation & Storytelling", icon: "🎨", accent: "text-studio-valoria" }
+                { name: "Brand Identity", icon: "✨", colorVar: "var(--color-studio-graphics)", textClass: "text-studio-graphics" },
+                { name: "Digital Platforms", icon: "💻", colorVar: "var(--color-studio-dev)", textClass: "text-studio-dev" },
+                { name: "Marketing & SEO", icon: "📈", colorVar: "var(--color-studio-markezo)", textClass: "text-studio-markezo" },
+                { name: "Motion Design", icon: "🎬", colorVar: "var(--color-studio-blinks)", textClass: "text-studio-blinks" },
+                { name: "Animation & Storytelling", icon: "🎨", colorVar: "var(--color-studio-valoria)", textClass: "text-studio-valoria" }
               ].map((step, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-2xl bg-card border border-border shadow-lg flex items-center justify-center text-2xl mb-4 relative z-10 hover:scale-110 transition-transform cursor-default group">
-                    <span className={step.accent}>{step.icon}</span>
-                    {i < 4 && <div className="hidden lg:block absolute -right-4 top-1/2 text-border text-xl animate-slide-arrow">→</div>}
+                <div key={i} className="flex flex-col items-center group relative w-full cursor-default">
+                  
+                  {/* The Box */}
+                  <div 
+                    className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center text-2xl mb-4 relative z-10 transition-all duration-500 group-hover:scale-110"
+                  >
+                     <div 
+                       className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                       style={{ 
+                         boxShadow: `0 0 30px -5px ${step.colorVar}`,
+                         border: `1px solid ${step.colorVar}` 
+                       }}
+                     />
+                    <span className={`relative z-10 transition-transform duration-500 group-hover:scale-110 ${step.textClass}`}>{step.icon}</span>
                   </div>
-                  <div className="text-sm font-bold text-center">{step.name}</div>
+
+                  {/* Connecting Line */}
+                  {i < 4 && (
+                    <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-[2px] bg-border/50 -translate-y-1/2 z-0 overflow-hidden rounded-full">
+                      {/* Expanding glowing line */}
+                      <div 
+                        className="absolute top-0 left-0 h-full w-0 transition-all duration-700 ease-in-out group-hover:w-full"
+                        style={{
+                           background: `linear-gradient(90deg, transparent, ${step.colorVar})`,
+                           boxShadow: `0 0 10px ${step.colorVar}`
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  {/* Glowing Arrow head that travels */}
+                  {i < 4 && (
+                    <div className="hidden lg:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-[2px] -translate-y-1/2 z-0 pointer-events-none">
+                       <div 
+                         className="absolute top-1/2 -translate-y-1/2 -translate-x-full left-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out group-hover:left-[100%] w-5 h-5 flex items-center justify-center"
+                       >
+                         <svg viewBox="0 0 24 24" fill="none" className="w-full h-full" style={{ color: step.colorVar, filter: `drop-shadow(0 0 8px ${step.colorVar})` }}>
+                           <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                         </svg>
+                       </div>
+                    </div>
+                  )}
+
+                  <div className="text-sm font-bold text-center group-hover:text-foreground transition-colors">{step.name}</div>
                 </div>
               ))}
             </div>
@@ -183,7 +221,7 @@ export default function Home() {
       </section>
 
       {/* Selected Work Section */}
-      <section className="py-24 px-6 bg-zinc-950/30">
+      {/* <section className="py-24 px-6 bg-zinc-950/30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div className="max-w-xl">
@@ -218,7 +256,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why CINORIUM Section */}
       <section className="py-24 px-6 border-y border-border/50">
@@ -243,7 +281,7 @@ export default function Home() {
       </section>
 
       {/* Digital Growth Partnership Section */}
-      <section className="py-24 px-6 bg-zinc-950/50">
+      <section className="py-24 px-6 bg-secondary/30">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Continuous Digital Growth</h2>
@@ -264,9 +302,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <button className="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-zinc-200 transition-colors">
+            <Link href="/contact" className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold hover:bg-primary/90 transition-colors">
               Join Our Growth Partnership →
-            </button>
+            </Link>
           </div>
           <div className="lg:w-1/2 w-full aspect-square relative rounded-3xl overflow-hidden border border-border bg-card/50 flex items-center justify-center p-12">
             <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -293,12 +331,12 @@ export default function Home() {
             Partner with CINORIUM to design, build, and grow your digital presence with a connected ecosystem of creative studios.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="w-full sm:w-auto px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+            <Link href="/contact" className="w-full sm:w-auto px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 transition-transform inline-flex justify-center items-center">
               Start Your Project →
-            </button>
-            <button className="w-full sm:w-auto px-10 py-5 bg-secondary text-white border border-border rounded-full font-bold text-lg hover:bg-accent transition-colors">
+            </Link>
+            <Link href="/studios" className="w-full sm:w-auto px-10 py-5 bg-secondary text-secondary-foreground border border-border rounded-full font-bold text-lg hover:bg-accent transition-colors inline-flex justify-center items-center">
               Explore Our Studios →
-            </button>
+            </Link>
           </div>
         </div>
       </section>

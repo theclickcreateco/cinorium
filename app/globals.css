@@ -2,6 +2,45 @@
 
 @layer base {
   :root {
+    /* Light Mode Variables (Default) */
+    --background: #ffffff;
+    --foreground: #020617; /* Very dark slate for contrast */
+
+    --card: #f8fafc; /* Very light slate */
+    --card-foreground: #020617;
+
+    --popover: #ffffff;
+    --popover-foreground: #020617;
+
+    --primary: #020617; /* Dark button background in light mode */
+    --primary-foreground: #ffffff;
+
+    --secondary: #e2e8f0; /* Light border / secondary bg */
+    --secondary-foreground: #0f172a;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #475569; /* Dark enough for readability WCAG AA */
+
+    --accent: #cbd5e1;
+    --accent-foreground: #020617;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #94a3b8;
+
+    /* Studio Colors remain similar but slightly adjusted for contrast if needed */
+    --studio-dev: #2563eb; /* Slightly darker blue */
+    --studio-graphics: #db2777; /* Slightly darker pink */
+    --studio-markezo: #059669; /* Slightly darker green */
+    --studio-blinks: #d97706; /* Slightly darker amber */
+    --studio-valoria: #7c3aed; /* Slightly darker violet */
+  }
+
+  .dark {
+    /* Dark Mode Variables */
     --background: #050505;
     --foreground: #ffffff;
 
@@ -30,17 +69,12 @@
     --input: #1a1a1a;
     --ring: #d4d4d8;
 
-    /* Studio Colors */
+    /* Original Dark Studio Colors */
     --studio-dev: #3b82f6;
-    /* Blue */
     --studio-graphics: #ec4899;
-    /* Pink */
     --studio-markezo: #10b981;
-    /* Green */
     --studio-blinks: #f59e0b;
-    /* Amber */
     --studio-valoria: #8b5cf6;
-    /* Violet */
   }
 }
 

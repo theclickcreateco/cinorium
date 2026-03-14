@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 export default function About() {
     return (
@@ -42,9 +43,9 @@ export default function About() {
 
                     <section className="py-20 border-t border-border/50 text-center">
                         <h2 className="text-3xl font-bold mb-6">Ready to lead your industry?</h2>
-                        <button className="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-zinc-200 transition-colors">
+                        <Link href="/contact" className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold hover:bg-primary/90 transition-colors">
                             Let's Talk →
-                        </button>
+                        </Link>
                     </section>
                 </div>
             </main>

@@ -10,7 +10,7 @@ export default function Footer() {
                     <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                         Designed to Lead.
                     </p>
-                    <div className="text-xs text-muted-foreground/50 italic">
+                    <div className="text-xs text-foreground/60 italic">
                         © {new Date().getFullYear()} CINORIUM. All rights reserved.
                     </div>
                 </div>
@@ -18,19 +18,19 @@ export default function Footer() {
                 <div>
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Studios</h4>
                     <ul className="space-y-4 text-sm text-muted-foreground">
-                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                        <li className="hover:text-foreground transition-colors text-xs font-medium uppercase tracking-tight">
                             <Link href="/studios/dev">The Click & Create Co. — Dev</Link>
                         </li>
-                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                        <li className="hover:text-foreground transition-colors text-xs font-medium uppercase tracking-tight">
                             <Link href="/studios/graphics">The Click & Create Co. — Graphics</Link>
                         </li>
-                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                        <li className="hover:text-foreground transition-colors text-xs font-medium uppercase tracking-tight">
                             <Link href="/studios/markezo">Markezo</Link>
                         </li>
-                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                        <li className="hover:text-foreground transition-colors text-xs font-medium uppercase tracking-tight">
                             <Link href="/studios/blinksArts">BlinksArts</Link>
                         </li>
-                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                        <li className="hover:text-foreground transition-colors text-xs font-medium uppercase tracking-tight">
                             <Link href="/studios/valoria">Valoria</Link>
                         </li>
                     </ul>
@@ -39,14 +39,14 @@ export default function Footer() {
                 <div>
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Links</h4>
                     <ul className="space-y-4 text-sm text-muted-foreground">
-                        <li className="hover:text-white transition-colors cursor-pointer">
+                        <li className="hover:text-foreground transition-colors cursor-pointer">
                             <Link href="/about">About</Link>
                         </li>
-                        {/* <li className="hover:text-white transition-colors cursor-pointer">Work</li> */}
-                        <li className="hover:text-white transition-colors cursor-pointer">
+                        {/* <li className="hover:text-foreground transition-colors cursor-pointer">Work</li> */}
+                        <li className="hover:text-foreground transition-colors cursor-pointer">
                             <Link href="/studios">Studios</Link>
                         </li>
-                        <li className="hover:text-white transition-colors cursor-pointer">
+                        <li className="hover:text-foreground transition-colors cursor-pointer">
                             <Link href="/contact">Contact</Link>
                         </li>
                     </ul>
@@ -59,7 +59,7 @@ export default function Footer() {
                             href="https://x.com/cinorium_"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
+                            className="hover:text-foreground transition-colors"
                             aria-label="X (Twitter)"
                         >
                             <Twitter size={20} />
@@ -68,7 +68,7 @@ export default function Footer() {
                             href="https://www.facebook.com/cinorium"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
+                            className="hover:text-foreground transition-colors"
                             aria-label="Facebook"
                         >
                             <Facebook size={20} />
@@ -77,7 +77,7 @@ export default function Footer() {
                             href="https://www.instagram.com/cinorium_/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
+                            className="hover:text-foreground transition-colors"
                             aria-label="Instagram"
                         >
                             <Instagram size={20} />

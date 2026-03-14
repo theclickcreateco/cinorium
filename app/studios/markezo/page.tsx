@@ -30,7 +30,7 @@ export default function MarkezoStudio() {
             </section>
 
             {/* Services Section */}
-            <section className="py-24 px-6 bg-zinc-950/50">
+            <section className="py-24 px-6 bg-secondary/30">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
@@ -74,7 +74,7 @@ export default function MarkezoStudio() {
                     <p className="text-xl text-muted-foreground mb-12">
                         Partner with Markezo to engineer your digital growth and build a powerful online presence that converts.
                     </p>
-                    <Link href="/contact" className="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+                    <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Start a Project →
                     </Link>
                 </div>

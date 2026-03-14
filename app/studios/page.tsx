@@ -74,7 +74,7 @@ export default function StudiosPage() {
             </section>
 
             {/* Studios Grid */}
-            <section className="py-24 px-6 bg-zinc-950/50">
+            <section className="py-24 px-6 bg-secondary/30">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {studios.map((studio) => (
@@ -82,7 +82,7 @@ export default function StudiosPage() {
                                 <div className={`p-8 rounded-3xl border bg-card transition-all duration-300 flex flex-col h-full ${studio.color} hover:shadow-2xl`}>
                                     <div className="mb-6 flex justify-between items-start">
                                         <div>
-                                            <h3 className="text-xl font-bold mb-2 group-hover:text-white transition-colors">{studio.name}</h3>
+                                            <h3 className="text-xl font-bold mb-2 group-hover:text-foreground transition-colors">{studio.name}</h3>
                                             <div className={`text-sm font-semibold tracking-widest uppercase ${studio.accent}`}>{studio.tagline}</div>
                                         </div>
                                         <div className={`p-2 rounded-full bg-secondary/50 group-hover:bg-card ${studio.accent} transition-colors`}>
@@ -106,7 +106,7 @@ export default function StudiosPage() {
                     <p className="text-xl text-muted-foreground mb-12">
                         Get in touch with us, and we'll guide you to the right creative or technical discipline for your project.
                     </p>
-                    <Link href="/contact" className="inline-block px-10 py-5 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform">
+                    <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Contact Us →
                     </Link>
                 </div>

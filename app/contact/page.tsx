@@ -107,16 +107,16 @@ export default function Contact() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Name</label>
-                                    <input required id="name" name="name" type="text" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="John Doe" disabled={status === "loading"} />
+                                    <input required id="name" name="name" type="text" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-primary transition-colors" placeholder="John Doe" disabled={status === "loading"} />
                                 </div>
                                 <div className="space-y-2">
                                     <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Email</label>
-                                    <input required id="email" name="email" type="email" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors" placeholder="john@example.com" disabled={status === "loading"} />
+                                    <input required id="email" name="email" type="email" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-primary transition-colors" placeholder="john@example.com" disabled={status === "loading"} />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="studio" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Studio of Interest</label>
-                                <select id="studio" name="studio" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors appearance-none" disabled={status === "loading"}>
+                                <select id="studio" name="studio" className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-primary transition-colors appearance-none" disabled={status === "loading"}>
                                     <option value="">Select a Studio</option>
                                     <option value="Development">Development</option>
                                     <option value="Graphics & Design">Graphics & Design</option>
@@ -127,7 +127,7 @@ export default function Contact() {
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message</label>
-                                <textarea required id="message" name="message" rows={5} className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-white transition-colors resize-none" placeholder="Tell us about your project..." disabled={status === "loading"}></textarea>
+                                <textarea required id="message" name="message" rows={5} className="w-full bg-background border border-border rounded-2xl px-6 py-4 outline-none focus:border-primary transition-colors resize-none" placeholder="Tell us about your project..." disabled={status === "loading"}></textarea>
                             </div>
 
                             {status === "error" && (
@@ -144,7 +144,7 @@ export default function Contact() {
                                 </div>
                             )}
 
-                            <button type="submit" disabled={status === "loading"} className="w-full py-5 bg-white text-black rounded-full font-bold text-lg hover:bg-zinc-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2">
+                            <button type="submit" disabled={status === "loading"} className="w-full py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:bg-primary/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none flex items-center justify-center gap-2">
                                 {status === "loading" ? "Sending..." : "Send Message →"}
                             </button>
                         </form>
