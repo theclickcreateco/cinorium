@@ -2,6 +2,12 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import { Film, PlayCircle, Move, Sparkles } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "BlinksArts — Motion Design",
+    description: "Engaging animated visuals, motion graphics, and animated explainers that bring your stories to life at BlinksArts.",
+};
 
 export default function BlinksArtsStudio() {
     return (
@@ -72,7 +78,7 @@ export default function BlinksArtsStudio() {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Add Motion to Your Brand?</h2>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Let's collaborate to bring your ideas to life with high-impact motion design and animated storytelling.
+                        Let&apos;s collaborate to bring your ideas to life with high-impact motion design and animated storytelling.
                     </p>
                     <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Start a Project →

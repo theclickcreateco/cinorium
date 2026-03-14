@@ -2,6 +2,12 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import { Palette, Feather, Layers, MousePointer2 } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Graphics Studio",
+    description: "Visual identity, brand assets, and digital design systems. Professional design services by the CINORIUM Graphics Studio.",
+};
 
 export default function GraphicsStudio() {
     return (
@@ -72,7 +78,7 @@ export default function GraphicsStudio() {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Elevate Your Visuals?</h2>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Let's collaborate to create a powerful visual identity and design assets that make your brand unmistakable.
+                        Let&apos;s collaborate to create a powerful visual identity and design assets that make your brand unmistakable.
                     </p>
                     <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Start a Project →

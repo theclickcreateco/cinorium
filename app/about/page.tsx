@@ -1,6 +1,12 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "About Our Collective",
+    description: "Learn about the CINORIUM philosophy — a collective of specialized studios focused on precision, integrated impact, and growth.",
+};
 
 export default function About() {
     return (
@@ -12,10 +18,10 @@ export default function About() {
                     <section className="mb-24">
                         <h1 className="text-4xl md:text-6xl font-bold mb-8">Designed to Lead.</h1>
                         <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                            CINORIUM is not just a company; it's a collective of specialized studios, each a master of its own domain. From the precision of code to the artistry of animation, we unite under one ecosystem to build the digital future.
+                            CINORIUM is not just a company; it&apos;s a collective of specialized studios, each a master of its own domain. From the precision of code to the artistry of animation, we unite under one ecosystem to build the digital future.
                         </p>
                         <p className="text-lg text-muted-foreground/80 leading-relaxed">
-                            Our philosophy is simple: separate expertise, collective impact. By allowing each studio to focus on what they do best, we deliver unparalleled quality across every touchpoint of a brand's digital journey.
+                            Our philosophy is simple: separate expertise, collective impact. By allowing each studio to focus on what they do best, we deliver unparalleled quality across every touchpoint of a brand&apos;s digital journey.
                         </p>
                     </section>
 
@@ -24,7 +30,7 @@ export default function About() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                             <div>
                                 <h3 className="text-xl font-bold mb-4">Precision First</h3>
-                                <p className="text-muted-foreground">We don't believe in "generalized" solutions. Every pixel, line of code, and marketing strategy is engineered for excellence.</p>
+                                <p className="text-muted-foreground">We don&apos;t believe in &quot;generalized&quot; solutions. Every pixel, line of code, and marketing strategy is engineered for excellence.</p>
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold mb-4">Integrated Impact</h3>

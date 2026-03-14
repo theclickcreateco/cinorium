@@ -1,8 +1,13 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Image from "next/image";
 import Link from "next/link";
 import { Code, Layout, Zap, Smartphone } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Development Studio",
+    description: "High-performance digital platforms, custom web applications, and pixel-perfect UI implementation by the CINORIUM Development Studio.",
+};
 
 export default function DevStudio() {
     return (
@@ -92,7 +97,7 @@ export default function DevStudio() {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to Build Your Next Project?</h2>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Let's collaborate to bring your digital vision to life with expert development and performance-first engineering.
+                        Let&apos;s collaborate to bring your digital vision to life with expert development and performance-first engineering.
                     </p>
                     <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Start a Project →

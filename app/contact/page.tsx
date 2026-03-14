@@ -38,10 +38,11 @@ export default function Contact() {
 
             setStatus("success");
             (e.target as HTMLFormElement).reset();
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Contact form error:", error);
             setStatus("error");
-            setErrorMessage(error.message || "Oops! Something went wrong. Please try again later.");
+            const message = error instanceof Error ? error.message : "Oops! Something went wrong. Please try again later.";
+            setErrorMessage(message);
         }
     };
 
@@ -54,7 +55,7 @@ export default function Contact() {
                     <div>
                         <h1 className="text-5xl md:text-7xl font-bold mb-8">Start a Project.</h1>
                         <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-                            Whether you're building a new brand, a high-performance platform, or looking for continuous growth, our studios are ready to partner with you.
+                            Whether you&apos;re building a new brand, a high-performance platform, or looking for continuous growth, our studios are ready to partner with you.
                         </p>
 
                         <div className="space-y-8">
@@ -140,7 +141,7 @@ export default function Contact() {
                             {status === "success" && (
                                 <div className="p-4 bg-studio-markezo/10 border border-studio-markezo/20 rounded-xl flex items-center gap-3 text-studio-markezo animate-fade-in">
                                     <CheckCircle2 size={20} className="shrink-0" />
-                                    <span className="text-sm font-medium">Message sent successfully! We'll be in touch soon.</span>
+                                    <span className="text-sm font-medium">Message sent successfully! We&apos;ll be in touch soon.</span>
                                 </div>
                             )}
 

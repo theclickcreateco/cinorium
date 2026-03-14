@@ -2,6 +2,12 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import { TrendingUp, Search, FileText, BarChart3 } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Markezo — Marketing & SEO",
+    description: "Engineer your digital growth with SEO strategies, content marketing, and data-driven campaigns by Markezo.",
+};
 
 export default function MarkezoStudio() {
     return (

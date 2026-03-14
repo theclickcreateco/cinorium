@@ -2,6 +2,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Our Studios",
+    description: "Explore the five specialized studios within the CINORIUM ecosystem: Development, Graphics, Marketing (Markezo), Motion (BlinksArts), and Animation (Valoria).",
+};
 
 export default function StudiosPage() {
     const studios = [
@@ -104,7 +110,7 @@ export default function StudiosPage() {
                 <div className="max-w-3xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold mb-8">Not sure which studio fits your needs?</h2>
                     <p className="text-xl text-muted-foreground mb-12">
-                        Get in touch with us, and we'll guide you to the right creative or technical discipline for your project.
+                        Get in touch with us, and we&apos;ll guide you to the right creative or technical discipline for your project.
                     </p>
                     <Link href="/contact" className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:scale-105 hover:bg-primary/90 transition-all">
                         Contact Us →

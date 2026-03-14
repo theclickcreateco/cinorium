@@ -2,6 +2,12 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import { Ghost, Box, PenTool, Tv } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Valoria — Animation Studio",
+    description: "Immersive animated stories, world-building, and cinematic productions. Cinematic excellence by Valoria Animation Studio.",
+};
 
 export default function ValoriaStudio() {
     return (
@@ -70,7 +76,7 @@ export default function ValoriaStudio() {
             {/* CTA Section */}
             <section className="py-32 px-6 text-center">
                 <div className="max-w-3xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's Build a World Together.</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Let&apos;s Build a World Together.</h2>
                     <p className="text-xl text-muted-foreground mb-12">
                         Partner with Valoria to create immersive animated stories and cinematic experiences that captivate your audience.
                     </p>
