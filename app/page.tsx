@@ -68,8 +68,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 opacity-20 pointer-events-none">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-studio-dev/30 rounded-full blur-[120px]" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-studio-graphics/30 rounded-full blur-[120px]" />
+          <div className="absolute top-20 left-10 w-72 h-72 md:w-96 md:h-96 bg-studio-dev/30 rounded-full blur-[40px] md:blur-[120px]" />
+          <div className="absolute bottom-20 right-10 w-72 h-72 md:w-96 md:h-96 bg-studio-graphics/30 rounded-full blur-[40px] md:blur-[120px]" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center">

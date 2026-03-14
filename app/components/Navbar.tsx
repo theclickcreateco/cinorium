@@ -18,7 +18,7 @@ export default function Navbar() {
     return (
         <>
             {/* Top Navbar */}
-            <nav className="fixed top-0 w-full z-50 border-b border-border/10 bg-background/80 backdrop-blur-md">
+            <nav className="fixed top-0 w-full z-50 border-b border-border/5 bg-background/80 backdrop-blur-md">
                 <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
                     <Link href="/" className="text-xl font-bold tracking-tight text-foreground">CINORIUM</Link>
                     
@@ -57,7 +57,7 @@ export default function Navbar() {
 
             {/* Mobile Bottom Dock (Floating) */}
             <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-sm">
-                <nav className="bg-card/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-full p-2 flex items-center justify-around">
+                <nav className="bg-card/95 backdrop-blur-lg border border-border/50 shadow-xl rounded-full p-2 flex items-center justify-around">
                     {navLinks.map((link) => {
                         const Icon = link.icon;
                         const isActive = link.href === "/" 
