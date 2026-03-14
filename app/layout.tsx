@@ -83,19 +83,31 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "CINORIUM",
-              "url": "https://cinorium.com",
-              "logo": "https://cinorium.com/logo.png",
-              "sameAs": [
-                "https://x.com/cinorium_",
-                "https://www.facebook.com/cinorium",
-                "https://www.instagram.com/cinorium_/"
-              ],
-              "description": "A collective of specialized studios building brands, digital platforms, and growth systems for modern businesses."
-            })
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "CINORIUM",
+                "url": "https://cinorium.com",
+                "sameAs": [
+                  "https://x.com/cinorium_",
+                  "https://www.facebook.com/cinorium",
+                  "https://www.instagram.com/cinorium_/"
+                ],
+                "description": "A collective of specialized studios building brands, digital platforms, and growth systems for modern businesses."
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "CINORIUM",
+                "url": "https://cinorium.com",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://cinorium.com/search?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ])
           }}
         />
       </body>
