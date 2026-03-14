@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -134,9 +135,9 @@ export default function Home() {
                     <p className="text-sm font-medium">{studio.outcome}</p>
                   </div>
 
-                  <button className={`mt-4 text-sm font-bold flex items-center gap-2 transition-transform group-hover:translate-x-1 ${studio.accent}`}>
+                  <Link href={`/studios/${studio.id}`} className={`mt-4 text-sm font-bold flex items-center gap-2 transition-transform group-hover:translate-x-1 ${studio.accent}`}>
                     {studio.cta}
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -20,7 +20,7 @@ export default function Navbar() {
                     >
                         About
                     </Link>
-                    <Link href="/" className="hover:text-foreground transition-colors">Work</Link>
+                    {/* <Link href="/" className="hover:text-foreground transition-colors">Work</Link> */}
                     <Link href="/" className="hover:text-foreground transition-colors">Studios</Link>
                     <Link
                         href="/contact"

@@ -1,4 +1,5 @@
 import { Twitter, Instagram, Facebook } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -17,11 +18,21 @@ export default function Footer() {
                 <div>
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Studios</h4>
                     <ul className="space-y-4 text-sm text-muted-foreground">
-                        <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">The Click & Create Co. — Dev</li>
-                        <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">The Click & Create Co. — Graphics</li>
-                        <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">Markezo</li>
-                        <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">BlinksArts</li>
-                        <li className="hover:text-white transition-colors cursor-pointer text-xs font-medium uppercase tracking-tight">Valoria</li>
+                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                            <Link href="/studios/dev">The Click & Create Co. — Dev</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                            <Link href="/studios/graphics">The Click & Create Co. — Graphics</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                            <Link href="/studios/markezo">Markezo</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                            <Link href="/studios/blinksArts">BlinksArts</Link>
+                        </li>
+                        <li className="hover:text-white transition-colors text-xs font-medium uppercase tracking-tight">
+                            <Link href="/studios/valoria">Valoria</Link>
+                        </li>
                     </ul>
                 </div>
 
@@ -29,7 +40,7 @@ export default function Footer() {
                     <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-muted-foreground">Links</h4>
                     <ul className="space-y-4 text-sm text-muted-foreground">
                         <li className="hover:text-white transition-colors cursor-pointer">About</li>
-                        <li className="hover:text-white transition-colors cursor-pointer">Work</li>
+                        {/* <li className="hover:text-white transition-colors cursor-pointer">Work</li> */}
                         <li className="hover:text-white transition-colors cursor-pointer">Studios</li>
                         <li className="hover:text-white transition-colors cursor-pointer">Contact</li>
                     </ul>
