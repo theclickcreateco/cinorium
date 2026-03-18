@@ -38,7 +38,7 @@ export default function Home() {
       accent: "text-studio-markezo"
     },
     {
-      id: "blinks",
+      id: "blinksArts",
       name: "BlinksArts",
       tagline: "Motion. Story. Emotion.",
       description: "A motion design studio creating engaging animated visuals that capture attention and communicate ideas effectively.",
