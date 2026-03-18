@@ -11,6 +11,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Home", href: "/", icon: Home },
         { name: "Studios", href: "/studios", icon: LayoutGrid },
+        { name: "Blog", href: "/blog", icon: LayoutGrid }, // Reuse an icon or Info
         { name: "About", href: "/about", icon: Info },
         { name: "Contact", href: "/contact", icon: Mail },
     ];
@@ -35,6 +36,12 @@ export default function Navbar() {
                             className={`transition-colors hover:text-foreground ${pathname.startsWith("/studios") ? "text-foreground font-semibold" : ""}`}
                         >
                             Studios
+                        </Link>
+                        <Link 
+                            href="/blog" 
+                            className={`transition-colors hover:text-foreground ${pathname.startsWith("/blog") ? "text-foreground font-semibold" : ""}`}
+                        >
+                            Blog
                         </Link>
                         <Link
                             href="/contact"
