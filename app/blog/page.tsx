@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import prisma from "../../lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Blog | CINORIUM",
   description: "Insights, updates, and stories from the CINORIUM collective.",
@@ -38,7 +40,7 @@ export default async function BlogPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {posts.map((post: any) => (
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}

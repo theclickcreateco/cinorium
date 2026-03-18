@@ -6,6 +6,8 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import prisma from "../../../lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 interface BlogPostProps {
   params: Promise<{
     slug: string;
@@ -109,7 +111,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
         {/* Article Content */}
         <article className="prose prose-lg dark:prose-invert prose-headings:font-heading max-w-none">
           {/* Simple paragraph splitting for now. For a real blog system, a markdown renderer or MDX is better. */}
-          {post.content.split('\n').map((paragraph, index) => (
+          {post.content.split('\n').map((paragraph: string, index: number) => (
             paragraph.trim() ? <p key={index}>{paragraph}</p> : <br key={index} />
           ))}
         </article>
