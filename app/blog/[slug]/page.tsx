@@ -5,6 +5,12 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import prisma from "../../../lib/prisma";
+import BlogRating from "../../components/BlogRating";
+import SocialShare from "../../components/SocialShare";
+import { calculateReadTime } from "../../../lib/blog-utils";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +59,8 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     notFound();
   }
 
+  const readTime = calculateReadTime(post.content);
+
   // Schema.org JSON-LD for the Article
   const jsonLd = {
     "@context": "https://schema.org",
@@ -74,7 +82,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <main className="flex-grow pt-32 pb-20 px-6 max-w-4xl mx-auto w-full">
+      <main className="flex-grow pt-32 pb-20 px-6 max-w-5xl mx-auto w-full">
         {/* Back Link */}
         <Link
           href="/blog"
@@ -83,38 +91,104 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
           ← Back to Blog
         </Link>
 
-        {/* Article Header */}
-        <header className="mb-12">
-          <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-primary mb-6">
-            <span>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
-            <span className="w-1 h-1 rounded-full bg-border" />
-            <span>By {post.author}</span>
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Main Article Content */}
+          <div className="lg:w-2/3">
+            {/* Article Header */}
+            <header className="mb-12">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-bold uppercase tracking-widest text-primary mb-6">
+                <span>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                <span className="w-1 h-1 rounded-full bg-border" />
+                <span>{readTime}</span>
+                <span className="w-1 h-1 rounded-full bg-border" />
+                <span>By {post.author}</span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                {post.title}
+              </h1>
+
+              {/* Tags */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {post.tags.map((tag: string) => (
+                    <span 
+                      key={tag} 
+                      className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-bold rounded-full uppercase tracking-wider"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {post.coverImage && (
+                <div className="relative aspect-video w-full rounded-3xl overflow-hidden mb-12 border border-border">
+                  <Image
+                    src={post.coverImage}
+                    alt={post.title}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
+                </div>
+              )}
+            </header>
+
+            {/* Article Content */}
+            <article className="mb-16">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm, remarkBreaks]}
+                  components={{
+                    img: ({ src, alt }) => (
+                      <div className="relative aspect-video w-full rounded-2xl overflow-hidden my-12 border border-border shadow-md">
+                        <Image
+                          src={(src as string) || ""}
+                          alt={alt || "Blog image"}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 1024px"
+                        />
+                      </div>
+                    ),
+                  }}
+                >
+                  {post.content}
+                </ReactMarkdown>
+              </div>
+            </article>
+
+            {/* Rating Component */}
+            <BlogRating 
+              postId={post.id} 
+              initialRatingSum={post.ratingSum} 
+              initialRatingCount={post.ratingCount} 
+            />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-            {post.title}
-          </h1>
 
-          {post.coverImage && (
-            <div className="relative aspect-video w-full rounded-3xl overflow-hidden mb-12 border border-border">
-              <Image
-                src={post.coverImage}
-                alt={post.title}
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 1024px"
+          {/* Sidebar / Sharing */}
+          <aside className="lg:w-1/3">
+            <div className="sticky top-32 p-8 rounded-3xl bg-secondary/30 border border-border/50">
+              <SocialShare 
+                title={post.title} 
+                url={`https://cinorium.com/blog/${post.slug}`} 
               />
+              
+              <div className="mt-12 pt-12 border-t border-border/50">
+                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground/50 mb-4">About the Collective</div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  CINORIUM is a creative collective of specialized studios building brands, digital platforms, and growth systems for modern businesses.
+                </p>
+                <div className="mt-6">
+                   <Link href="/contact" className="text-sm font-bold text-primary hover:underline">
+                     Start a project with us →
+                   </Link>
+                </div>
+              </div>
             </div>
-          )}
-        </header>
-
-        {/* Article Content */}
-        <article className="prose prose-lg dark:prose-invert prose-headings:font-heading max-w-none">
-          {/* Simple paragraph splitting for now. For a real blog system, a markdown renderer or MDX is better. */}
-          {post.content.split('\n').map((paragraph: string, index: number) => (
-            paragraph.trim() ? <p key={index}>{paragraph}</p> : <br key={index} />
-          ))}
-        </article>
+          </aside>
+        </div>
 
       </main>
 
@@ -128,3 +202,4 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     </div>
   );
 }
+

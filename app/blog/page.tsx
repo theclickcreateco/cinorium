@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import prisma from "../../lib/prisma";
+import { calculateReadTime } from "../../lib/blog-utils";
 
 export const dynamic = "force-dynamic";
 
@@ -63,7 +64,11 @@ export default async function BlogPage() {
                 )}
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="text-xs text-muted-foreground mb-3 flex items-center justify-between">
-                    <span>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                    <div className="flex items-center gap-2">
+                      <span>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                      <span className="w-1 h-1 rounded-full bg-border" />
+                      <span>{calculateReadTime(post.content)}</span>
+                    </div>
                     <span className="font-semibold text-primary">{post.author}</span>
                   </div>
                   <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
