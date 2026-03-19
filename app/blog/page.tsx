@@ -67,7 +67,7 @@ export default async function BlogPage() {
                     <div className="flex items-center gap-2">
                       <span>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                       <span className="w-1 h-1 rounded-full bg-border" />
-                      <span>{calculateReadTime(post.content)}</span>
+                      <span>{post.readTime || calculateReadTime(post.content)}</span>
                     </div>
                     <span className="font-semibold text-primary">{post.author}</span>
                   </div>

@@ -8,9 +8,7 @@ import prisma from "../../../lib/prisma";
 import BlogRating from "../../components/BlogRating";
 import SocialShare from "../../components/SocialShare";
 import { calculateReadTime } from "../../../lib/blog-utils";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkBreaks from "remark-breaks";
+import { marked } from "marked";
 
 export const dynamic = "force-dynamic";
 
@@ -59,7 +57,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     notFound();
   }
 
-  const readTime = calculateReadTime(post.content);
+  const readTime = post.readTime || calculateReadTime(post.content);
 
   // Schema.org JSON-LD for the Article
   const jsonLd = {
@@ -137,26 +135,10 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
 
             {/* Article Content */}
             <article className="mb-16">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <ReactMarkdown 
-                  remarkPlugins={[remarkGfm, remarkBreaks]}
-                  components={{
-                    img: ({ src, alt }) => (
-                      <div className="relative aspect-video w-full rounded-2xl overflow-hidden my-12 border border-border shadow-md">
-                        <Image
-                          src={(src as string) || ""}
-                          alt={alt || "Blog image"}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 1024px) 100vw, 1024px"
-                        />
-                      </div>
-                    ),
-                  }}
-                >
-                  {post.content}
-                </ReactMarkdown>
-              </div>
+              <div 
+                className="prose prose-lg dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: marked.parse(String(post.content).trim()) }}
+              />
             </article>
 
             {/* Rating Component */}
