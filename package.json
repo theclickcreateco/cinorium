@@ -13,18 +13,15 @@
     "@next/third-parties": "^16.1.6",
     "@prisma/adapter-neon": "^7.5.0",
     "@prisma/client": "^7.5.0",
-    "@tailwindcss/typography": "^0.5.19",
+
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^0.577.0",
-    "marked": "^17.0.4",
+
     "next": "16.1.6",
     "next-themes": "^0.4.6",
     "nodemailer": "^8.0.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-markdown": "^10.1.0",
-    "remark-breaks": "^4.0.0",
-    "remark-gfm": "^4.0.1",
     "ws": "^8.19.0"
   },
   "devDependencies": {
